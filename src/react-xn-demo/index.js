@@ -41,7 +41,7 @@ class Demo extends PureComponent {
   render() {
     const { father, childProps, a } = this.state;
     console.log('这时父组件的render');
-    const styleProps = {color:'red'}
+    // const styleProps = {color:'red'}
     
     return (
       <div>
