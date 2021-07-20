@@ -27,6 +27,11 @@ class Demo extends PureComponent {
     const { a } = this.state
     a.b=666666
     this.setState({a});
+    const nowPromise = new Promise((resolve,reject) => {
+      // resolve('hhhh')
+      reject('hhh')
+    })
+    return nowPromise
   };
 
   handleUpdateChild = () => {
@@ -38,6 +43,8 @@ class Demo extends PureComponent {
     });
   };
 
+
+
   render() {
     const { father, childProps, a } = this.state;
     console.log('这时父组件的render');
@@ -45,7 +52,9 @@ class Demo extends PureComponent {
     
     return (
       <div>
-        <button onClick={() => this.handleFather()}>更新父组件{a.b}</button>
+        <button onClick={() => this.handleFather().then(data => {console.log(data);
+        }).catch(error => {console.log(error);
+        })}>更新父组件{a.b}</button>
         <button onClick={this.handleUpdateChild}>更新子组件{childProps}</button>
         <Child num={childProps} />
       </div>

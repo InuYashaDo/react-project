@@ -7,6 +7,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@welldone-software/why-did-you-render": "^4.2.5",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"

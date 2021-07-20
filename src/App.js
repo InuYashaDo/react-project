@@ -1,12 +1,18 @@
 // import './wdyr.js';
 import React from 'react';
 import './App.css';
-import Demo from './react-xn-demo/index'
+// import pureComponentDemo from './react-xn-demo/pureComponentDemo.js';
+// import CanvasDemo from './react-xn-demo/canvasDemo';
+// import InterviewQuestions from './react-xn-demo/interviewQuestions';
+import BorderColor from './react-xn-demo/BorderColor/borderColor';
 
 function App() {
   return (
     <div className="App">
-      <Demo />
+      {/* <pureComponentDemo /> */}
+      {/* <CanvasDemo /> */}
+      {/* <InterviewQuestions /> */}
+      <BorderColor />
     </div>
   );
 }
