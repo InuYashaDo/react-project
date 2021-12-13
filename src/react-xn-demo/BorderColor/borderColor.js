@@ -1,8 +1,12 @@
-import React from "react"
-import './index.less'
+import React from "react";
+import "./index.less";
 
 const BorderColor = () => {
-    return <div className='root'>hh</div>
-}
+  return (
+    <div className="parent">
+      <div className="child" />
+    </div>
+  );
+};
 
-export default BorderColor
+export default BorderColor;
