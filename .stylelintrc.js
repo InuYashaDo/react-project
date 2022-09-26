@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['stylelint-config-standard','stylelint-config-rational-order','stylelint-config-prettier'],
   rules: {
-    'plugin/declaration-block-no-ignored-properties': true,
+    'plugin/declaration-block-no-ignored-properties': false,
     'comment-empty-line-before': null,
     'declaration-empty-line-before': null,
     'function-name-case': 'lower',

@@ -1,6 +1,7 @@
-const add = (a, b) => {
+import styles from './test.module.less'
+
+const add = (a: number, b: number) => {
   console.log(a + b);
-  const a = 1;
   return a + b;
 };
 
