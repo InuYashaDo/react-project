@@ -56,9 +56,9 @@ module.exports = function (proxy, allowedHost) {
 
       app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
     },
-    client: {
-      logging: 'none',
-      overlay: false,
-    },
+    // client: {
+    //   logging: 'none',
+    //   overlay: false,
+    // },
   };
 };
