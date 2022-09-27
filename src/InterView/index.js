@@ -5,8 +5,8 @@ import CssPart from './CssPart';
 export default function index() {
   return (
     <div style={{ padding: 20 }}>
-      {/* <JsPart /> */}
-      <CssPart />
+      <JsPart />
+      {/* <CssPart /> */}
     </div>
   );
 }

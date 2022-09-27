@@ -38,7 +38,72 @@
       //   height: 100%;
       //   background: darkblue;
       // }
-      /* 利用flex实现 */
+    }
+    /* 利用flex */
+    .two-line-container {
+      display: flex;
+
+      .left {
+        width: 20px;
+        background: red;
+      }
+
+      .right {
+        flex: 1;
+        background: pink;
+      }
+    }
+
+    .three-line-container {
+      width: 200px;
+      height: 200px;
+      margin-top: 20px;
+
+      > div {
+        height: 100%;
+      }
+
+      // .middle {
+      //   // margin: 0 50px; // float + margin
+      //   width: calc(100% - 100px); // float + margin-left + calc
+      //   margin-left: 50px;
+      //   background: pink;
+      // }
+
+      // .left {
+      //   float: left;
+      //   background: red;
+      //   width: 50px;
+      // }
+
+      // .right {
+      //   float: right;
+      //   background: red;
+      //   width: 50px;
+      // }
+    }
+
+    /* flex实现 */
+    .three-line-container {
+      display: flex;
+
+      .left {
+        width: 50px;
+        background: red;
+        order: 1;
+      }
+
+      .middle {
+        flex: 1;
+        background: pink;
+        order: 2;
+      }
+
+      .right {
+        width: 50px;
+        background: red;
+        order: 3;
+      }
     }
   }
 }

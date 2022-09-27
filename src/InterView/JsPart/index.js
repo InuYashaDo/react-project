@@ -10,6 +10,7 @@ import Promise from './promise';
 import Ajax from './ajax';
 import Sort from './sort';
 import EventLoopComp from './eventLoop';
+import Type from './type';
 
 const compList = [
   {
@@ -56,9 +57,13 @@ const compList = [
     Comp: EventLoopComp,
     title: 'eventLoop',
   },
+  {
+    Comp: Type,
+    title: 'type',
+  },
 ];
 
-const nowShow = 'this';
+const nowShow = 'type';
 
 export default function index() {
   const renderComp = (item) => {
