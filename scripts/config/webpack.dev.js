@@ -1,4 +1,5 @@
 const Webpack = require('webpack');
+const path = require('path');
 const ErrorOverlayWebpackPlugin = require('error-overlay-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 const { merge } = require('webpack-merge');
@@ -19,14 +20,15 @@ module.exports = merge(common, {
       overlay: false,
     },
     proxy: {
-      ...proxySettings
+      ...proxySettings,
     },
+    historyApiFallback: true,
   },
   plugins: [
     new ErrorOverlayWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ['You application is running here http://localhost:3000'],
+        messages: ['You application is running here http://localhost:5040'],
         notes: [
           'Some additional notes to be displayed upon successful compilation',
         ],

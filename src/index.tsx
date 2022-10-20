@@ -1,11 +1,21 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client';
-import Router from 'Src/common/router';
+import { registerMicroApps, start } from 'qiankun';
+import render from './App';
 
-const root: any = createRoot(document.querySelector('#root') as HTMLElement);
+render();
 
-if (module && module.hot) {
-  module.hot.accept();
-}
+registerMicroApps([
+  {
+    name: 'reactApp', // app name registered
+    entry: '//localhost:4000',
+    container: '#test-child-content',
+    activeRule: '/yourActiveRule',
+  },
+  // {
+  //   name: 'vue app',
+  //   entry: { scripts: ['//localhost:7100/main.js'] },
+  //   container: '#yourContainer2',
+  //   activeRule: '/vueRule',
+  // },
+]);
 
-root.render(<Router />);
+start();
