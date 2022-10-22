@@ -1,0 +1,120 @@
+html {
+  font-size: 100px;
+}
+
+body {
+  background: #e3e3e3;
+}
+
+.card {
+  width: 7rem;
+  height: 2rem;
+  background-image: url(https://gw.alipayobjects.com/mdn/rms_7527d7/afts/img/A*HD9_S4RyppUAAAAAAAAAAAAAARQnAQ);
+  background-size: 100% auto;
+  background-position: center;
+  margin-bottom: 0.4rem;
+  display: flex;
+
+  .card-left {
+    flex: 27;
+    padding: 0.1rem;
+    .card-left-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.24rem;
+
+      .card-left-title {
+        line-height: 0.36rem;
+        display: flex;
+
+        img {
+          height: 0.36rem;
+          width: 0.36rem;
+        }
+        .left-top-title {
+          color: black;
+        }
+      }
+
+      .card-right-distance {
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 0.2rem;
+      }
+    }
+
+    .card-left-bottom {
+      display: flex;
+      margin-top: 0.1rem;
+
+      .left-camp-image {
+        width: 1.33rem;
+        height: 1.33rem;
+        margin-right: 0.2rem;
+      }
+
+      .left-bottom-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .promo-logo-container {
+          display: flex;
+
+          .promo-logo-item {
+            height: 0.3rem;
+            margin-right: 0.1rem;
+          }
+        }
+
+        .voucher-desc {
+          font-size: 0.24rem;
+          font-weight: bold;
+        }
+
+        .real-price {
+          font-size: 0.32rem;
+          color: red;
+          font-weight: bold;
+        }
+
+        .origin-price {
+          font-size: 0.2rem;
+          color: rgba(0, 0, 0, 0.3);
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+
+  .card-right {
+    flex: 10;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .top-discount {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 0.3rem);
+      width: 0.6rem;
+      text-align: center;
+      font-size: 0.2rem;
+      color: #83530c;
+      background-image: linear-gradient(to right, #febc7e, #fe9c3a);
+      border-radius: 0 0 0.1rem 0.1rem;
+    }
+
+    .shop-btn {
+      width: 1.24rem;
+      height: 0.6rem;
+      background: red;
+      color: white;
+      font-size: .36rem;
+      font-weight: bold;
+      line-height: 0.6rem;
+      text-align: center;
+      border-radius: 0.4rem;
+    }
+  }
+}
