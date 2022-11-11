@@ -1,9 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const forkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackBar = require('webpackbar');
-const path = require('path');
 const {
   appIndex,
   appHtml,
@@ -16,12 +15,12 @@ const {
 } = require('../paths');
 const { isDevelopment } = require('../env');
 
-const getCssLoaders = importLoaders => [
+const getCssLoaders = (importLoaders, modules = true) => [
   isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
     options: {
-      modules: true,
+      modules,
       sourceMap: isDevelopment,
       importLoaders,
     },
@@ -51,7 +50,8 @@ const getCssLoaders = importLoaders => [
 
 module.exports = {
   entry: {
-    app: path.resolve(appIndex),
+    // app: path.resolve(appIndex),
+    app: appIndex,
   },
   cache: {
     type: 'filesystem',
@@ -60,17 +60,22 @@ module.exports = {
     },
   },
   output: {
-    path: path.resolve(appBuild),
+    // path: path.resolve(appBuild),
+    path: appBuild,
     filename: 'js/[name].[chunkhash:8].js',
     assetModuleFilename: `images/[name].[contenthash:8].[ext]`,
+    // publicPath: appHtml,
   },
   resolve: {
     alias: {
-      Src: path.resolve(appSrc),
-      Components: path.resolve(appSrcComponents),
-      Utils: path.resolve(appSrcUtils),
+      // Src: path.resolve(appSrc),
+      // Components: path.resolve(appSrcComponents),
+      // Utils: path.resolve(appSrcUtils),
+      Src: appSrc,
+      Components: appSrcComponents,
+      Utils: appSrcUtils,
     },
-    extensions: ['.tsx', '.ts', '.js', '.json'],
+    extensions: ['.tsx', '.ts', '.js', '.json', '.less', '.css'],
   },
   module: {
     rules: [
@@ -84,7 +89,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: getCssLoaders(1),
+        use: getCssLoaders(1, false),
       },
       {
         test: /\.less$/,
@@ -115,7 +120,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(appHtml),
+      // template: path.resolve(appHtml),
+      template: appHtml,
       filename: 'index.html',
       inject: 'body',
       quiet: true,
@@ -154,9 +160,10 @@ module.exports = {
     new WebpackBar({
       name: isDevelopment ? '正在启动' : '正在打包',
     }),
-    new forkTsCheckerWebpackPlugin({
+    new ForkTsCheckerWebpackPlugin({
       typescript: {
-        configFile: path.resolve(appTsConfig),
+        // configFile: path.resolve(appTsConfig),
+        configFile: appTsConfig,
       },
     }),
   ],

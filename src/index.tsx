@@ -7,8 +7,8 @@ registerMicroApps([
   {
     name: 'reactApp', // app name registered
     entry: '//localhost:4000',
-    container: '#test-child-content',
-    activeRule: '/yourActiveRule',
+    container: '#child-container',
+    activeRule: '/react',
   },
   // {
   //   name: 'vue app',
