@@ -11,6 +11,8 @@ import Ajax from './ajax';
 import Sort from './sort';
 import EventLoopComp from './eventLoop';
 import Type from './type';
+import Copy2 from './copy2';
+import Extends2 from './extends2';
 
 const compList = [
   {
@@ -61,9 +63,17 @@ const compList = [
     Comp: Type,
     title: 'type',
   },
+  {
+    Comp: Copy2,
+    title: 'copy2',
+  },
+  {
+    Comp: Extends2,
+    title: 'extends2',
+  },
 ];
 
-const nowShow = 'type';
+const nowShow = 'extends2';
 
 export default function index() {
   const renderComp = (item) => {
