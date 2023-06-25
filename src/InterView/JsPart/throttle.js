@@ -1,45 +1,109 @@
 import React from 'react';
 
 export default function Throttle() {
-  const timeThrottle = (fun, delay) => {
-    let oldDate = new Date();
+  // const timeThrottle = (fun, delay) => {
+  //   let oldDate = new Date();
 
-    return () => {
-      if (new Date() - oldDate >= delay) {
-        fun();
-        oldDate = new Date();
+  //   return () => {
+  //     if (new Date() - oldDate >= delay) {
+  //       fun();
+  //       oldDate = new Date();
+  //     }
+  //   };
+  // };
+
+  // const timeoutThrottle = (fun, delay) => {
+  //   let timer = null;
+  //   return () => {
+  //     if (timer) {
+  //       return;
+  //     }
+  //     timer = setTimeout(() => {
+  //       fun();
+  //       timer = null;
+  //     }, delay);
+  //   };
+  // };
+
+  // const throttle = (fun, delay) => {
+  //   let oldDate = new Date();
+  //   let timer = null;
+
+  //   return () => {
+  //     clearTimeout(timer);
+
+  //     if (new Date() - oldDate >= delay) {
+  //       fun();
+  //       oldDate = new Date();
+  //       return;
+  //     }
+
+  //     timer = setTimeout(() => {
+  //       fun();
+  //     }, delay);
+  //   };
+  // };
+
+  // const recThrottle = (fun, delay) => {
+  //   let waitFun = null;
+  //   let canCall = true;
+
+  //   return () => {
+  //     if (!canCall && fun) {
+  //       waitFun = fun;
+  //       return;
+  //     }
+
+  //     fun();
+  //     canCall = false;
+
+  //     setTimeout(() => {
+  //       canCall = true;
+  //       if (waitFun) {
+  //         recThrottle(waitFun);
+  //         waitFun = null;
+  //       }
+  //     }, delay);
+  //   };
+  // };
+
+  const timeThrottle = (fun, delay) => {
+    let time = Date.now();
+
+    return (...args) => {
+      if (Date.now() - time >= delay) {
+        time = Date.now();
+        return fun(args);
       }
     };
   };
 
   const timeoutThrottle = (fun, delay) => {
-    let timer = null;
-    return () => {
-      if (timer) {
-        return;
-      }
+    let timer;
+    return (...args) => {
+      if (timer) return;
       timer = setTimeout(() => {
-        fun();
+        clearTimeout(timer);
         timer = null;
+        return fun(args);
       }, delay);
     };
   };
 
   const throttle = (fun, delay) => {
-    let oldDate = new Date();
-    let timer = null;
+    let timer;
+    let time = Date.now();
 
-    return () => {
+    return (...args) => {
       clearTimeout(timer);
 
-      if (new Date() - oldDate >= delay) {
-        fun();
-        oldDate = new Date();
-        return;
+      if (Date.now() - time >= delay) {
+        time = Date.now();
+        return fun(args);
       }
 
       timer = setTimeout(() => {
-        fun();
+        return fun(args);
       }, delay);
     };
   };
@@ -48,13 +112,13 @@ export default function Throttle() {
     let waitFun = null;
     let canCall = true;
 
-    return () => {
+    return (...args) => {
       if (!canCall && fun) {
         waitFun = fun;
         return;
       }
 
-      fun();
+      fun(args);
       canCall = false;
 
       setTimeout(() => {
@@ -82,7 +146,7 @@ export default function Throttle() {
           textAlign: 'center',
           lineHeight: '50px',
         }}
-        onClick={timeThrottle((a = 1) => handleClick(a), 1000)}
+        onClick={timeThrottle(() => handleClick(1), 1000)}
       >
         点击我
       </div>
@@ -95,7 +159,7 @@ export default function Throttle() {
           textAlign: 'center',
           lineHeight: '50px',
         }}
-        onClick={timeoutThrottle((a = 1) => handleClick(a), 1000)}
+        onClick={timeoutThrottle(() => handleClick(1), 1000)}
       >
         点击我
       </div>
@@ -108,7 +172,7 @@ export default function Throttle() {
           textAlign: 'center',
           lineHeight: '50px',
         }}
-        onClick={throttle((a = 1) => handleClick(a), 1000)}
+        onClick={throttle(() => handleClick(1), 1000)}
       >
         点击我
       </div>
@@ -121,7 +185,7 @@ export default function Throttle() {
           textAlign: 'center',
           lineHeight: '50px',
         }}
-        onClick={recThrottle((a = 1) => handleClick(a), 1000)}
+        onClick={recThrottle(() => handleClick(1), 1000)}
       >
         点击我
       </div>

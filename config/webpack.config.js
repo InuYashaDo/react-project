@@ -82,7 +82,7 @@ module.exports = function (webpackEnv) {
       },
       {
         loader: require.resolve('css-loader'),
-        options: { ...cssOptions, modules: true },
+        options: { ...cssOptions },
       },
       {
         // Options for PostCSS as we reference these options twice
@@ -287,9 +287,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     resolveLoader: {
-      plugins: [
-        PnpWebpackPlugin.moduleLoader(module),
-      ],
+      plugins: [PnpWebpackPlugin.moduleLoader(module)],
     },
     module: {
       strictExportPresence: false,
@@ -372,21 +370,22 @@ module.exports = function (webpackEnv) {
             },
             {
               test: cssRegex,
-              exclude: cssModuleRegex,
+              exclude: [/node_modules/],
               use: getStyleLoaders({
                 importLoaders: 1,
+                modules: true,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
               }),
               sideEffects: true,
             },
             {
-              test: cssModuleRegex,
+              test: cssRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
-                modules: {
-                  getLocalIdent: getCSSModuleLocalIdent,
-                },
+                // modules: {
+                //   getLocalIdent: getCSSModuleLocalIdent,
+                // },
               }),
             },
             {
@@ -420,6 +419,10 @@ module.exports = function (webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
+                  modules: {
+                    mode: 'local',
+                    localIdentName: '[name]__[local]___[hash:base64:5]',
+                  },
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
                 'less-loader'

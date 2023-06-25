@@ -1,0 +1,32 @@
+.root {
+  :global {
+    .table-part {
+      display: flex;
+    }
+
+    .data-container {
+      border: 1px solid #000;
+      margin-right: 10px;
+
+      .table-item {
+        &:not(:last-child) {
+          border-bottom: 1px solid #000;
+        }
+      }
+
+      .checked-table-item {
+        background-color: red;
+      }
+    }
+
+    .name-item {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid green;
+      color: #000;
+      font-size: 10px;
+    }
+  }
+}

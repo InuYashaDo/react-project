@@ -1,6 +1,7 @@
 // import './wdyr.js';
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import './App.css';
+import 'antd/dist/antd.css';
 // import pureComponentDemo from './react-xn-demo/pureComponentDemo.js';
 // import CanvasDemo from './react-xn-demo/canvasDemo';
 // import InterviewQuestions from './react-xn-demo/interviewQuestions';
@@ -14,6 +15,9 @@ import CodeTest from './react-xn-demo/codeTest';
 import InterView from './InterView';
 import Ref from './Ref';
 import TestIndex from './TestIndex';
+import AdvancedGuide from './advancedGuide';
+import OthersDemo from './othersDemo';
+import ProjectDemo from './projectDemo';
 
 // const { FirstDemo, SecondDemo } = Tabs;
 
@@ -30,10 +34,13 @@ function App() {
       {/* <UseMemo /> */}
       {/* <FuncParent /> */}
       {/* <ClassParent /> */}
-      <InterView />
+      {/* <InterView /> */}
       {/* <Ref /> */}
       {/* <CodeTest /> */}
       {/* <TestIndex /> */}
+      {/* <AdvancedGuide /> */}
+      <OthersDemo />
+      {/* <ProjectDemo /> */}
     </div>
   );
 }

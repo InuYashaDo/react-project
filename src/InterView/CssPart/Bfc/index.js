@@ -36,11 +36,38 @@ export default function Bfc() {
     );
   };
 
+  const renderNoMarkFloat = () => {
+    return (
+      <div className='bfc-container'>
+        <div className='float-part' />
+        <div className='bfc-part'>
+          {/* 同一个bfc内的margin覆盖 */}
+          <div className='bfc-inner-margin-top'></div>
+          <div className='bfc-inner-margin-bottom'></div>
+          {/* 解决同一个bfc内margin覆盖 */}
+          <div className='bfc-no-margin'>
+            <div className='no-margin-top'></div>
+            <div className='no-margin-wrapper'>
+              <div className='no-margin-bottom'></div>
+            </div>
+          </div>
+          {/* 子元素的margin-top添加到父元素身上 */}
+          <div className='bfc-margin-top'>
+            <div className='margin-top-child'></div>
+          </div>
+        </div>
+        {/* bfc内部块元素与父容器border左边重合 */}
+        <div className='bfc-border-margin'></div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.root}>
       {/* {renderMargin()} */}
       {/* {renderFloat()} */}
-      {renderAutoLayout()}
+      {/* {renderAutoLayout()} */}
+      {renderNoMarkFloat()}
     </div>
   );
 }

@@ -1,0 +1,40 @@
+.root {
+  :global {
+    .loading-container {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      margin-top: 100px;
+
+      &.animation:local {
+        animation: ani 2s linear infinite;
+      }
+
+      .loading-point:local {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 10px;
+      }
+
+      @keyframes ani {
+        0% {
+          transform: rotate3d(1,1,1,0deg);
+        }
+
+        50% {
+          transform: rotate3D(1,1,1,180deg);
+        }
+
+        100% {
+          transform: rotate3D(1,1,1,360deg);
+        }
+      }
+
+      &.transform {
+        transition: transform 2s;
+        transform: rotate3D(1,1,1,100deg);
+      }
+    }
+  }
+}

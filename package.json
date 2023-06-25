@@ -41,6 +41,7 @@
     "jest-watch-typeahead": "0.4.2",
     "less": "^4.1.1",
     "less-loader": "6.0.0",
+    "lodash": "^4.17.21",
     "mini-css-extract-plugin": "0.9.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.6.4",
@@ -70,7 +71,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "promises-aplus-tests src/InterView/promise2.js"
+    "test": "promises-aplus-tests src/InterView/JsPart/promise5.js"
   },
   "eslintConfig": {
     "extends": "react-app"

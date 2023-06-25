@@ -1,0 +1,58 @@
+.root {
+  :global {
+    .carousel-wrapper {
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+
+      .carousel-container {
+        display: flex;
+        height: 200px;
+        width: fit-content;
+        transition: transform 200ms;
+
+        .carousel-item {
+          width: 300px;
+          height: 200px;
+          flex-shrink: 0;
+        }
+      }
+
+      .point-list {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 10px;
+        left: 30%;
+
+        .point-item {
+          width: 20px;
+          height: 20px;
+          color: #fff;
+
+          &__selected {
+            color: #000;
+          }
+        }
+      }
+
+      .operate-btn {
+        width: 20px;
+        height: 20px;
+        background: wheat;
+        opacity: 0.3;
+        position: absolute;
+        top: 40%;
+
+        &.prev {
+          left: 10px;
+        }
+
+        &.next {
+          right: 10px;
+        }
+      }
+    }
+  }
+}

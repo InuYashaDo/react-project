@@ -4,31 +4,44 @@ import React, { useRef, useState } from 'react';
 export default function Debounce() {
   const inputRef = useRef(null);
 
-  const debounce = (fun, delay, immediate) => {
-    let timer = null;
+  // const debounce = (fun, delay, immediate) => {
+  //   let timer = null;
 
-    return (e) => {
-      e.persist()
+  //   return (e) => {
+  //     e.persist()
 
-      clearTimeout(timer);
-      if (immediate && !timer) {
-        fun(e);
-      }
+  //     clearTimeout(timer);
+  //     if (immediate && !timer) {
+  //       fun(e);
+  //     }
 
-      timer = setTimeout(() => {
-        fun(e);
-        timer = null
-      }, delay);
-    };
-  };
+  //     timer = setTimeout(() => {
+  //       fun(e);
+  //       timer = null
+  //     }, delay);
+  //   };
+  // };
 
   const handleChange = (e) => {
-    // console.log(e);
-    // console.log(inputRef.current.value);
+    console.log(e);
+    console.log(inputRef.current.value);
   };
 
   const handleClick = (val) => {
     console.log(`我被点击了，传入的参数为${val}`);
+  };
+
+  const debounce = (fun, time) => {
+    let timer;
+
+    return (...args) => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        return fun(args);
+      }, time);
+    };
   };
 
   return (
@@ -47,7 +60,7 @@ export default function Debounce() {
           textAlign: 'center',
           lineHeight: '100px',
         }}
-        onClick={debounce((a = 1) => handleClick(a), 1000)}
+        onClick={debounce(() => handleClick(1), 1000)}
       >
         点击我
       </div>

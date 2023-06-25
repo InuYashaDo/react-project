@@ -113,6 +113,7 @@ export default function Copy2() {
 
     // case2 递归--完整版
     // 要考虑 null symbol date类型  Reg类型 不可枚举  function 循环引用
+    if (obj === null) return null;
     if (obj.constructor === Date) return new Date(obj);
     if (obj.constructor === RegExp) return new RegExp(obj);
     if (hash.has(obj)) {
@@ -130,7 +131,7 @@ export default function Copy2() {
         typeof obj[key] !== null &&
         typeof obj[key] !== 'function'
       ) {
-        cloneObj[key] = deepCopy(obj[key]);
+        cloneObj[key] = deepCopy(obj[key], hash);
         return;
       }
       cloneObj[key] = obj[key];

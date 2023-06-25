@@ -136,6 +136,26 @@ export default function BindThis(props) {
   };
 
   test.selfApply({ test: 'll' }, [3, 3, 3]);
+
+  Function.prototype.myBind = function (_this, ...args) {
+    const that = this;
+
+    return function fn(...rest) {
+      const _fn = Symbol('fn');
+      _this.__proto__[_fn] = that;
+
+      const res = _this[_fn](...args, ...rest);
+      delete _this.__proto__[_fn];
+      return res;
+    };
+  };
+
+  const _obj = { test: 1 };
+  const bindFun = test.myBind(_obj, [1, 2, 3]);
+  bindFun();
+  bindFun([5]);
+  // console.log(_obj);
+
   // const res = test.selfCall({ test: 'll' }, 1, 2, 3, 4);
   // console.log(res);
 

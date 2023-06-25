@@ -1,0 +1,47 @@
+.root {
+  :global {
+    .auto-wh-parent {
+      width: 30%;
+      height: 30%;
+
+      .auto-wh-parent__child {
+        width: 100%;
+        height: 100%;
+        background: red;
+      }
+    }
+
+    .gpu-test-container {
+      position: relative;
+      .common-part {
+        background: red;
+        width: 100px;
+        height: 100px;
+      }
+
+      .gpu-part:local {
+        width: 100px;
+        height: 100px;
+        background: green;
+        position: absolute;
+        z-index: -1;
+        top: 50px;
+        left: 50px;
+        animation: ani 1s linear infinite;
+        will-change: left;
+      }
+
+      @keyframes ani {
+        0% {
+          left: 50px;
+        }
+        50% {
+          left: 100px;
+        }
+        100% {
+          left: 50px;
+        }
+      }
+    }
+  }
+}
