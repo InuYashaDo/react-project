@@ -1,0 +1,22 @@
+.root {
+  :global {
+    div {
+      width: 50px;
+    }
+
+    .one-line {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      color: red;
+      background: #f7f7f7;
+    }
+
+    .mul-line {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+  }
+}

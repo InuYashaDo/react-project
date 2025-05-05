@@ -4,7 +4,6 @@
   "private": false,
   "main": "",
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
@@ -13,7 +12,7 @@
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "@welldone-software/why-did-you-render": "^4.2.5",
-    "antd": "^4.17.1",
+    "antd": "^3.13.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.1.0",
@@ -50,6 +49,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
+    "promises-aplus-tests": "^2.1.2",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.1",
@@ -70,7 +70,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "promises-aplus-tests src/InterView/promise2.js"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Tabs, Modal, Input } from "antd";
-import { FormOutlined } from "@ant-design/icons";
+import { Tabs, Modal, Input, Icon } from "antd";
 import "../../../node_modules/antd/lib/tabs/style/index.css";
+import "../../../node_modules/antd/lib/tabs/style/css";
 import "../../../node_modules/antd/lib/modal/style/index.css";
 import "../../../node_modules/antd/lib/input/style/index.css";
 
@@ -90,25 +90,34 @@ function SecondDemo() {
   const handleEdit = (key, type) => {
     if (type === "remove") {
       handleRemove(key);
-    } else {
-      handleAdd();
     }
   };
 
   // tab更改时的回调
   const handleChange = (key) => {
-    const clickTab = tabData.find((item) => item.key === key);
-    setTab(clickTab);
+    if ((key === "add")) {
+      handleAdd();
+    } else {
+      const clickTab = tabData.find((item) => item.key === key);
+      setTab(clickTab);
+    }
   };
 
   // 自定义渲染每个tab
   const renderTab = (tabTitle, key) => {
     return (
       <span>
-        {key === tab.key && <FormOutlined onClick={() => setShowModal(true)} />}
+        {key === tab.key && (
+          <Icon type="form" onClick={() => setShowModal(true)} />
+        )}
         {tabTitle}
       </span>
     );
+  };
+
+  // 渲染addTab
+  const renderAddTab = () => {
+    return <Icon type="plus" />;
   };
 
   // modal传参
@@ -126,14 +135,20 @@ function SecondDemo() {
         type="editable-card"
         onEdit={handleEdit}
         onChange={handleChange}
+        hideAdd
       >
-        {tabData.map((item) => {
+        {tabData.map((item, index) => {
           return (
-            <TabPane tab={renderTab(item.title, item.key)} key={item.key}>
+            <TabPane
+              tab={renderTab(item.title, item.key)}
+              key={item.key}
+              closable={index !== 0}
+            >
               {item.content}
             </TabPane>
           );
         })}
+        <TabPane tab={renderAddTab()} key="add" closable={false} />
       </Tabs>
       {showModal && <ReNameModal {...modalProps} />}
     </>
