@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Child from './Child';
 import Cache from './Cache';
 import styles from './index.less';
+import ImgTest from './ImgTest'
 
 export default function Index() {
   const [prop] = useState({});
@@ -51,7 +52,8 @@ export default function Index() {
         <div>4</div>
         <Child prop={prop} />
       </div> */}
-      <Cache />
+      {/* <Cache /> */}
+      <ImgTest />
     </div>
   );
 }

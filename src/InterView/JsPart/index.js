@@ -27,6 +27,7 @@ import Instance2 from './instance2';
 import Extends3 from './extends3';
 import Others from './others';
 import Copy3 from './copy3';
+import SpecialFun from './specialFun'
 
 const compList = [
   {
@@ -141,9 +142,13 @@ const compList = [
     Comp: Copy3,
     title: 'copy3',
   },
+  {
+    Comp: SpecialFun,
+    title: 'specialFun',
+  },
 ];
 
-const nowShow = 'copy3';
+const nowShow = 'specialFun';
 
 export default function index() {
   const renderComp = (item) => {
